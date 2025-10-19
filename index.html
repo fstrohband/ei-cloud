@@ -27,17 +27,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4); /* dunkle Overlay für bessere Lesbarkeit */
+      background: rgba(0,0,0,0.4); /* Overlay für bessere Lesbarkeit */
       z-index: -1;
     }
 
-    /* Logo frei positionieren */
+    /* Logo rechts oben */
     .logo-container {
-      position: absolute;   /* unabhängig vom Rest der Seite */
-      top: -475px;            /* Abstand vom oberen Rand */
-      left: 93%;            /* horizontal zentriert */
-      transform: translateX(-50%);
-      text-align: center;
+      position: absolute;
+      top: 20px;      /* Abstand vom oberen Rand */
+      right: 20px;    /* Abstand vom rechten Rand */
+      text-align: right;
       z-index: 10;
     }
 
@@ -47,11 +46,11 @@
       display: inline-block;
     }
 
-    /* Textbereich unter dem Logo */
+    /* Text mittig unterhalb des Logos */
     .text-container {
       position: relative;
-      margin-top: 450px;  /* Abstand unter Logo */
-      text-align: center;
+      margin-top: 150px;  /* Abstand unter Logo */
+      text-align: center;  /* Schrift horizontal zentriert */
       height: 3.5em;      /* feste Höhe für Textbereich */
     }
 
