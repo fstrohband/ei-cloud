@@ -12,17 +12,15 @@
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      /* Hintergrund in Originalgröße, nicht skaliert */
-      background-image: url('hintergrund.jpg');
+      background-image: url('hintergrund.jpg'); 
       background-repeat: no-repeat;
       background-position: top center;
-      background-size: auto;
-      background-attachment: fixed;
+      background-size: auto; /* Originalgröße */
+      background-attachment: scroll; /* Seite scrollt */
       position: relative;
-      overflow-y: auto; /* Scrollen erlaubt */
+      overflow-y: auto;
     }
 
-    /* Overlay für bessere Lesbarkeit */
     body::before {
       content: "";
       position: fixed;
@@ -34,11 +32,11 @@
       z-index: -1;
     }
 
-    /* --- Logo frei positionierbar --- */
+    /* Logo rechts oben frei positionierbar */
     .logo-container {
       position: absolute;
-      top: 40px;       /* Abstand vom oberen Rand */
-      right: 40px;     /* Abstand vom rechten Rand */
+      top: 40px; 
+      right: 40px;
       z-index: 10;
     }
 
@@ -47,11 +45,11 @@
       height: auto;
     }
 
-    /* --- Text frei positionierbar --- */
+    /* Text frei positionierbar */
     .text-container {
       position: absolute;
-      top: 300px;       /* Abstand vom oberen Rand, frei einstellbar */
-      left: 50%;        /* horizontal mittig */
+      top: 300px; /* Abstand vom oberen Rand */
+      left: 50%; 
       transform: translateX(-50%);
       text-align: center;
       z-index: 5;
@@ -69,11 +67,8 @@
       text-shadow: 1px 1px 4px black;
     }
 
-    #anzahl {
-      font-weight: bold;
-    }
+    #anzahl { font-weight: bold; }
 
-    /* --- Footer bleibt unten --- */
     .footer {
       position: absolute;
       bottom: 30px;
