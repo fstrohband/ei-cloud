@@ -8,23 +8,24 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100%;
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
       background-image: url('hintergrund.jpg');
-      background-size: cover;          /* Skaliert das Bild vollständig */
-      background-position: center;     /* Zentriert es */
+      background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
-      background-attachment: scroll;   /* Auf Mobilgeräten zuverlässiger */
+      background-attachment: scroll; /* funktioniert auch auf iPhone */
       text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
       position: relative;
-      overflow: visible;               /* Kein Abschneiden */
+      overflow-x: hidden; /* nur horizontales Scrollen verhindern */
+      overflow-y: auto;   /* vertikales Scrollen wieder aktiv */
     }
 
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -33,11 +34,11 @@
       z-index: -1;
     }
 
-    /* Logo rechts oben */
+    /* --- Logo frei positionierbar (rechts oben) --- */
     .logo-container {
-      position: absolute;
-      top: 30px;
-      right: 30px;
+      position: fixed;
+      top: 30px;   /* Abstand von oben */
+      right: 30px; /* Abstand von rechts */
       z-index: 10;
     }
 
@@ -47,14 +48,13 @@
       display: block;
     }
 
-    /* Text mittig */
+    /* --- Text mittig --- */
     .text-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      margin-top: 40vh; /* Abstand von oben (macht Platz für Logo) */
       text-align: center;
       width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     h1 {
@@ -72,8 +72,7 @@
     }
 
     .footer {
-      position: absolute;
-      bottom: 20px;
+      margin-top: 40vh; /* Abstand für Scrollbereich */
       width: 100%;
       text-align: center;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
