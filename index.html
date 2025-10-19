@@ -16,7 +16,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-attachment: fixed; /* fixiert das Hintergrundbild */
       position: relative;
     }
 
@@ -29,6 +29,19 @@
       height: 100%;
       background: rgba(0,0,0,0.4);
       z-index: -1;
+    }
+
+    /* --- Logo frei positionierbar --- */
+    .logo-container {
+      position: absolute;
+      top: 20px;       /* Abstand vom oberen Rand */
+      right: 20px;     /* Abstand vom rechten Rand */
+      z-index: 30;
+    }
+
+    img.logo {
+      max-width: 130px; /* Logo-Größe */
+      height: auto;
     }
 
     /* Textbereich Haupttext */
@@ -45,13 +58,12 @@
       margin: 0.2em 0;
     }
 
-   h2 {
-
+    h2 {
       font-size: clamp(1.5rem, 5vw, 3rem);
       color: transparent;
       margin: 0;
-
     }
+
     #anzahl {
       font-weight: bold;
     }
@@ -59,7 +71,7 @@
     /* --- Neue, unabhängige Zahl --- */
     .anzahl-separat {
       position: absolute;
-      top: -250px; /* Abstand vom oberen Rand, frei konfigurierbar */
+      top: -250px; /* Abstand vom oberen Rand */
       left: 50%; 
       transform: translateX(-50%);
       font-size: 5rem; /* Größe unabhängig */
@@ -72,7 +84,7 @@
     /* --- Neue, unabhängige Textanzeige --- */
     .text-separat {
       position: absolute;
-      top: -390px; /* Abstand vom oberen Rand, frei konfigurierbar */
+      top: -390px; /* Abstand vom oberen Rand */
       left: 50%;
       transform: translateX(-50%);
       font-size: 2.3rem; 
@@ -101,6 +113,11 @@
   </style>
 </head>
 <body>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo" class="logo">
+  </div>
 
   <div class="text-container">
     <h1>Ei-Cloud – Immer auf dem neusten Stand!</h1>
