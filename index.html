@@ -8,21 +8,22 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100vh;
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      background-image: url('hintergrund.jpg'); /* Hintergrundbild */
+      background-image: url('hintergrund.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* fixiert das Hintergrundbild */
+      background-attachment: fixed;
       position: relative;
+      overflow-y: auto; /* Scrollen erlaubt */
     }
 
     body::before {
       content: "";
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -31,37 +32,39 @@
       z-index: -1;
     }
 
-    /* Logo rechts oben */
+    /* --- Logo frei positionierbar --- */
     .logo-container {
       position: absolute;
-      top: 20px;      /* Abstand vom oberen Rand */
-      right: 20px;    /* Abstand vom rechten Rand */
-      text-align: right;
+      top: 40px;       /* Abstand vom oberen Rand */
+      right: 40px;     /* Abstand vom rechten Rand */
       z-index: 10;
     }
 
     img.logo {
       max-width: 140px;
       height: auto;
-      display: inline-block;
     }
 
-    /* Text mittig unterhalb des Logos */
+    /* --- Text frei positionierbar --- */
     .text-container {
-      position: relative;
-      margin-top: 450px;  /* Abstand unter Logo */
-      text-align: center;  /* Schrift horizontal zentriert */
-      height: 3.5em;      /* feste Höhe für Textbereich */
+      position: absolute;
+      top: 300px;       /* Abstand vom oberen Rand, frei einstellbar */
+      left: 50%;        /* horizontal mittig */
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 5;
     }
 
     h1 {
       font-size: clamp(2rem, 6vw, 4rem);
       margin: 0.2em 0;
+      text-shadow: 2px 2px 6px black;
     }
 
     h2 {
       font-size: clamp(1.5rem, 5vw, 3rem);
       margin: 0;
+      text-shadow: 1px 1px 4px black;
     }
 
     #anzahl {
@@ -70,7 +73,7 @@
 
     .footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 30px;
       width: 100%;
       text-align: center;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
@@ -95,7 +98,9 @@
     <h2>Aktuell im Automaten: <span id="anzahl">–</span></h2>
   </div>
 
-  <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
+  <div class="footer">
+    Letzte Aktualisierung: <span id="zeit">–</span>
+  </div>
 
   <script>
     const THINGSPEAK_URL = "https://api.thingspeak.com/channels/3123810/feeds/last.json";
