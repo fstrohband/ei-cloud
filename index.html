@@ -16,7 +16,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* fixiert das Hintergrundbild */
+      background-attachment: fixed;
       position: relative;
     }
 
@@ -34,13 +34,13 @@
     /* --- Logo frei positionierbar --- */
     .logo-container {
       position: absolute;
-      top: 35px;       /* Abstand vom oberen Rand */
-      right: 310px;     /* Abstand vom rechten Rand */
+      top: 35px;
+      right: 310px;
       z-index: 30;
     }
 
     img.logo {
-      max-width: 130px; /* Logo-Größe */
+      max-width: 130px;
       height: auto;
     }
 
@@ -71,10 +71,10 @@
     /* --- Neue, unabhängige Zahl --- */
     .anzahl-separat {
       position: absolute;
-      top: -250px; /* Abstand vom oberen Rand */
+      top: -250px;
       left: 50%; 
       transform: translateX(-50%);
-      font-size: 5rem; /* Größe unabhängig */
+      font-size: 5rem;
       font-weight: bold;
       color: #d2691e; 
       z-index: 20;
@@ -84,7 +84,7 @@
     /* --- Neue, unabhängige Textanzeige --- */
     .text-separat {
       position: absolute;
-      top: -390px; /* Abstand vom oberen Rand */
+      top: -390px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 2.3rem; 
@@ -98,15 +98,14 @@
     /* --- Frei positionierbarer Ausverkauft-Text --- */
     .ausverkauft-text {
       position: absolute;
-      top: -180px;   /* Abstand vom oberen Rand, anpassbar */
+      top: -350px; /* frei anpassbar */
       left: 50%;
       transform: translateX(-50%);
-      font-size: 2rem;
+      font-size: 2.3rem;
       font-weight: bold;
-      color: transparent; /* wird sichtbar, wenn Zahl 0 */
-      z-index: 25;
       text-align: center;
-      white-space: nowrap;
+      color: transparent; /* standard unsichtbar */
+      z-index: 25;
     }
 
     .footer {
@@ -146,8 +145,8 @@
 
   <!-- Frei positionierbarer Ausverkauft-Text -->
   <div class="ausverkauft-text" id="ausverkauftText">
-    <span style="display:block;">Ausverkauft,</span>
-    <span style="display:block;">aber die Hühner legen schon nach!</span>
+    <span>Ausverkauft,</span><br>
+    <span>aber die Hühner legen schon nach!</span>
   </div>
 
   <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
@@ -167,17 +166,11 @@
         const ausverkauftSpan = document.getElementById("ausverkauftText");
 
         if (anzahl == 0) {
-          span1.innerText = "Ausverkauft, aber die Hühner legen schon nach!";
-          span1.classList.add("ausverkauft");
-
           span2.innerText = "0";
           span2.classList.add("ausverkauft");
 
           ausverkauftSpan.style.color = "#ff3333"; // sichtbar
         } else {
-          span1.innerText = anzahl;
-          span1.classList.remove("ausverkauft");
-
           span2.innerText = anzahl;
           span2.classList.remove("ausverkauft");
 
@@ -188,6 +181,7 @@
       } catch (e) {
         document.getElementById("anzahl").innerText = "Fehler";
         document.getElementById("anzahl2").innerText = "Fehler";
+        document.getElementById("ausverkauftText").style.color = "transparent";
         document.getElementById("zeit").innerText = "–";
       }
     }
