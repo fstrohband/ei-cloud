@@ -8,53 +8,50 @@
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
+      height: 100%;
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      background-image: url('hintergrund.jpg');
+      background-image: url('hintergrund.jpg'); /* Hintergrundbild */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: scroll; /* funktioniert auch auf iPhone */
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      background-attachment: fixed; /* fixiert das Hintergrundbild */
       position: relative;
-      overflow-x: hidden; /* nur horizontales Scrollen verhindern */
-      overflow-y: auto;   /* vertikales Scrollen wieder aktiv */
     }
 
     body::before {
       content: "";
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.4); /* Overlay für bessere Lesbarkeit */
       z-index: -1;
     }
 
-    /* --- Logo frei positionierbar (rechts oben) --- */
+    /* Logo rechts oben */
     .logo-container {
-      position: fixed;
-      top: 30px;   /* Abstand von oben */
-      right: 30px; /* Abstand von rechts */
+      position: absolute;
+      top: 20px;      /* Abstand vom oberen Rand */
+      right: 20px;    /* Abstand vom rechten Rand */
+      text-align: right;
       z-index: 10;
     }
 
     img.logo {
       max-width: 140px;
       height: auto;
-      display: block;
+      display: inline-block;
     }
 
-    /* --- Text mittig --- */
+    /* Text mittig unterhalb des Logos */
     .text-container {
-      margin-top: 40vh; /* Abstand von oben (macht Platz für Logo) */
-      text-align: center;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
+      position: relative;
+      margin-top: 150px;  /* Abstand unter Logo */
+      text-align: center;  /* Schrift horizontal zentriert */
+      height: 3.5em;      /* feste Höhe für Textbereich */
     }
 
     h1 {
@@ -72,7 +69,8 @@
     }
 
     .footer {
-      margin-top: 40vh; /* Abstand für Scrollbereich */
+      position: absolute;
+      bottom: 20px;
       width: 100%;
       text-align: center;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
@@ -127,7 +125,7 @@
     }
 
     ladeEier();
-    setInterval(ladeEier, 60000);
+    setInterval(ladeEier, 60000); // alle 60 Sekunden aktualisieren
   </script>
 </body>
 </html>
