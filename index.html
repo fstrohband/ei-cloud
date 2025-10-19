@@ -16,6 +16,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-attachment: fixed; /* fixiert das Hintergrundbild */
       position: relative;
     }
 
@@ -26,16 +27,18 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.4); /* dunkle Overlay für bessere Lesbarkeit */
       z-index: -1;
     }
 
-    /* Logo oben positionieren */
+    /* Logo frei positionieren */
     .logo-container {
-      width: 100%;
-      position: relative;
+      position: absolute;   /* unabhängig vom Rest der Seite */
+      top: 20px;            /* Abstand vom oberen Rand */
+      left: 50%;            /* horizontal zentriert */
+      transform: translateX(-50%);
       text-align: center;
-      margin-top: 0px; /* Abstand vom oberen Rand */
+      z-index: 10;
     }
 
     img.logo {
@@ -46,9 +49,10 @@
 
     /* Textbereich unter dem Logo */
     .text-container {
+      position: relative;
+      margin-top: 200px;  /* Abstand unter Logo */
       text-align: center;
-      height: 3.5em; /* feste Höhe für Text, damit Logo stabil bleibt */
-      margin-top: 20px;
+      height: 3.5em;      /* feste Höhe für Textbereich */
     }
 
     h1 {
