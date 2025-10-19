@@ -8,50 +8,53 @@
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      min-height: 100vh;
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      background-image: url('hintergrund.jpg'); /* Hintergrundbild */
+      background-image: url('hintergrund.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed; /* fixiert das Hintergrundbild */
       position: relative;
+      overflow-y: auto; /* erlaubt Scrollen */
     }
 
     body::before {
       content: "";
-      position: absolute;
+      position: fixed; /* bleibt auch beim Scrollen fixiert */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4); /* Overlay für bessere Lesbarkeit */
+      background: rgba(0,0,0,0.4);
       z-index: -1;
     }
 
-    /* Logo rechts oben */
+    /* Logo separat rechts positionierbar */
     .logo-container {
       position: absolute;
-      top: 20px;      /* Abstand vom oberen Rand */
-      right: 20px;    /* Abstand vom rechten Rand */
+      top: 40px;     /* vertikale Position */
+      right: 40px;   /* horizontale Position */
       text-align: right;
       z-index: 10;
     }
 
     img.logo {
-      max-width: 140px;
+      max-width: 140px;  /* Größe des Logos */
       height: auto;
       display: inline-block;
     }
 
-    /* Text mittig unterhalb des Logos */
+    /* Text unabhängig platzierbar */
     .text-container {
-      position: relative;
-      margin-top: 150px;  /* Abstand unter Logo */
-      text-align: center;  /* Schrift horizontal zentriert */
-      height: 3.5em;      /* feste Höhe für Textbereich */
+      position: absolute;
+      top: 300px;         /* Abstand von oben */
+      left: 50%;          /* horizontal mittig */
+      transform: translateX(-50%);
+      text-align: center;
+      width: 90%;
     }
 
     h1 {
@@ -69,7 +72,7 @@
     }
 
     .footer {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       width: 100%;
       text-align: center;
@@ -125,7 +128,7 @@
     }
 
     ladeEier();
-    setInterval(ladeEier, 60000); // alle 60 Sekunden aktualisieren
+    setInterval(ladeEier, 60000);
   </script>
 </body>
 </html>
