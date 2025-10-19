@@ -16,7 +16,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* fixiert das Hintergrundbild */
+      background-attachment: fixed;
       position: relative;
     }
 
@@ -31,23 +31,7 @@
       z-index: -1;
     }
 
-    /* Logo frei positionieren */
-    .logo-container {
-      position: absolute;
-      top: -420px;
-      left: 93%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-    }
-
-    img.logo {
-      max-width: 130px;
-      height: auto;
-      display: inline-block;
-    }
-
-    /* Textbereich unter dem Logo */
+    /* Textbereich Haupttext */
     .text-container {
       position: relative;
       margin-top: 400px;
@@ -67,18 +51,30 @@
 
     #anzahl {
       font-weight: bold;
-      
     }
 
     /* --- Neue, unabhängige Zahl --- */
     .anzahl-separat {
       position: absolute;
-      top: -250px; /* Abstand vom oberen Rand, frei konfigurierbar */
-      left: 55%; /* horizontal mittig */
+      top: 200px; /* Abstand vom oberen Rand, frei konfigurierbar */
+      left: 50%; 
       transform: translateX(-50%);
       font-size: 5rem; /* Größe unabhängig */
       font-weight: bold;
-      color: #d2691e; 
+      color: orange; 
+      z-index: 20;
+      text-align: center;
+    }
+
+    /* --- Neue, unabhängige Textanzeige --- */
+    .text-separat {
+      position: absolute;
+      top: 150px; /* Abstand vom oberen Rand, frei konfigurierbar */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem; 
+      font-weight: normal;
+      color: #fff;
       z-index: 20;
       text-align: center;
     }
@@ -101,9 +97,6 @@
   </style>
 </head>
 <body>
-  <div class="logo-container">
-    <img src="logo.png" alt="Logo" class="logo">
-  </div>
 
   <div class="text-container">
     <h1>Ei-Cloud – Immer auf dem neusten Stand!</h1>
@@ -112,6 +105,9 @@
 
   <!-- Neue, unabhängige Zahl -->
   <div class="anzahl-separat" id="anzahl2">–</div>
+
+  <!-- Neue, unabhängige Textanzeige -->
+  <div class="text-separat" id="text2">Aktuell im Automaten:</div>
 
   <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
 
