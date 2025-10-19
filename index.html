@@ -16,14 +16,13 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed; /* fixiert das Hintergrundbild */
+      background-attachment: fixed;
       position: relative;
-      overflow-y: auto; /* erlaubt Scrollen */
     }
 
     body::before {
       content: "";
-      position: fixed; /* bleibt auch beim Scrollen fixiert */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -32,29 +31,24 @@
       z-index: -1;
     }
 
-    /* Logo separat rechts positionierbar */
+    /* --- Logo frei positionierbar --- */
     .logo-container {
-      position: absolute;
-      top: 40px;     /* vertikale Position */
-      right: 40px;   /* horizontale Position */
-      text-align: right;
-      z-index: 10;
+      position: relative;
+      width: 100%;
+      text-align: right; /* Logo rechtsbündig */
+      padding-top: 40px; /* Abstand oben */
+      padding-right: 40px; /* Abstand rechts */
     }
 
     img.logo {
-      max-width: 140px;  /* Größe des Logos */
+      max-width: 140px;
       height: auto;
-      display: inline-block;
     }
 
-    /* Text unabhängig platzierbar */
+    /* --- Textblock darunter, frei einstellbar --- */
     .text-container {
-      position: absolute;
-      top: 300px;         /* Abstand von oben */
-      left: 50%;          /* horizontal mittig */
-      transform: translateX(-50%);
+      margin-top: 200px; /* Abstand vom Logo */
       text-align: center;
-      width: 90%;
     }
 
     h1 {
@@ -71,14 +65,14 @@
       font-weight: bold;
     }
 
+    /* --- Footer bleibt unten --- */
     .footer {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
       text-align: center;
+      margin-top: 200px;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
       color: #ddd;
       text-shadow: 1px 1px 3px black;
+      padding-bottom: 30px;
     }
 
     .ausverkauft {
@@ -98,7 +92,9 @@
     <h2>Aktuell im Automaten: <span id="anzahl">–</span></h2>
   </div>
 
-  <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
+  <div class="footer">
+    Letzte Aktualisierung: <span id="zeit">–</span>
+  </div>
 
   <script>
     const THINGSPEAK_URL = "https://api.thingspeak.com/channels/3123810/feeds/last.json";
