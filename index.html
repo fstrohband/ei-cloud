@@ -8,47 +8,50 @@
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      height: 100%;
       width: 100%;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      background-image: url('hintergrund.jpg');
+      background-image: url('hintergrund.jpg'); /* Hintergrundbild */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-attachment: fixed; /* fixiert das Hintergrundbild */
       position: relative;
     }
 
     body::before {
       content: "";
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.4); /* Overlay für bessere Lesbarkeit */
       z-index: -1;
     }
 
-    /* --- Logo frei positionierbar --- */
+    /* Logo rechts oben */
     .logo-container {
-      position: relative;
-      width: 100%;
-      text-align: right; /* Logo rechtsbündig */
-      padding-top: 40px; /* Abstand oben */
-      padding-right: 40px; /* Abstand rechts */
+      position: absolute;
+      top: 20px;      /* Abstand vom oberen Rand */
+      right: 20px;    /* Abstand vom rechten Rand */
+      text-align: right;
+      z-index: 10;
     }
 
     img.logo {
       max-width: 140px;
       height: auto;
+      display: inline-block;
     }
 
-    /* --- Textblock darunter, frei einstellbar --- */
+    /* Text mittig unterhalb des Logos */
     .text-container {
-      margin-top: 200px; /* Abstand vom Logo */
-      text-align: center;
+      position: relative;
+      margin-top: 150px;  /* Abstand unter Logo */
+      text-align: center;  /* Schrift horizontal zentriert */
+      height: 3.5em;      /* feste Höhe für Textbereich */
     }
 
     h1 {
@@ -65,14 +68,14 @@
       font-weight: bold;
     }
 
-    /* --- Footer bleibt unten --- */
     .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
       text-align: center;
-      margin-top: 200px;
       font-size: clamp(0.8rem, 2vw, 1.2rem);
       color: #ddd;
       text-shadow: 1px 1px 3px black;
-      padding-bottom: 30px;
     }
 
     .ausverkauft {
@@ -92,9 +95,7 @@
     <h2>Aktuell im Automaten: <span id="anzahl">–</span></h2>
   </div>
 
-  <div class="footer">
-    Letzte Aktualisierung: <span id="zeit">–</span>
-  </div>
+  <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
 
   <script>
     const THINGSPEAK_URL = "https://api.thingspeak.com/channels/3123810/feeds/last.json";
@@ -124,7 +125,7 @@
     }
 
     ladeEier();
-    setInterval(ladeEier, 60000);
+    setInterval(ladeEier, 60000); // alle 60 Sekunden aktualisieren
   </script>
 </body>
 </html>
