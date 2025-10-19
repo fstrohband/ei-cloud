@@ -95,6 +95,20 @@
       white-space: nowrap;
     }
 
+    /* --- Frei positionierbarer Ausverkauft-Text --- */
+    .ausverkauft-text {
+      position: absolute;
+      top: -180px;   /* Abstand vom oberen Rand, anpassbar */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: transparent; /* wird sichtbar, wenn Zahl 0 */
+      z-index: 25;
+      text-align: center;
+      white-space: nowrap;
+    }
+
     .footer {
       position: absolute;
       bottom: 20px;
@@ -130,6 +144,12 @@
   <!-- Neue, unabhängige Textanzeige -->
   <div class="text-separat" id="text2">Aktuell im Automaten:</div>
 
+  <!-- Frei positionierbarer Ausverkauft-Text -->
+  <div class="ausverkauft-text" id="ausverkauftText">
+    <span style="display:block;">Ausverkauft,</span>
+    <span style="display:block;">aber die Hühner legen schon nach!</span>
+  </div>
+
   <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
 
   <script>
@@ -144,6 +164,7 @@
 
         const span1 = document.getElementById("anzahl");
         const span2 = document.getElementById("anzahl2");
+        const ausverkauftSpan = document.getElementById("ausverkauftText");
 
         if (anzahl == 0) {
           span1.innerText = "Ausverkauft, aber die Hühner legen schon nach!";
@@ -151,12 +172,16 @@
 
           span2.innerText = "0";
           span2.classList.add("ausverkauft");
+
+          ausverkauftSpan.style.color = "#ff3333"; // sichtbar
         } else {
           span1.innerText = anzahl;
           span1.classList.remove("ausverkauft");
 
           span2.innerText = anzahl;
           span2.classList.remove("ausverkauft");
+
+          ausverkauftSpan.style.color = "transparent"; // unsichtbar
         }
 
         document.getElementById("zeit").innerText = zeit;
