@@ -27,15 +27,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4); /* dunkle Overlay für bessere Lesbarkeit */
+      background: rgba(0,0,0,0.4);
       z-index: -1;
     }
 
     /* Logo frei positionieren */
     .logo-container {
-      position: absolute;   /* unabhängig vom Rest der Seite */
-      top: -420px;            /* Abstand vom oberen Rand */
-      left: 93%;            /* horizontal zentriert */
+      position: absolute;
+      top: -420px;
+      left: 93%;
       transform: translateX(-50%);
       text-align: center;
       z-index: 10;
@@ -50,9 +50,9 @@
     /* Textbereich unter dem Logo */
     .text-container {
       position: relative;
-      margin-top: 400px;  /* Abstand unter Logo */
+      margin-top: 400px;
       text-align: center;
-      height: 3.5em;      /* feste Höhe für Textbereich */
+      height: 3.5em;
     }
 
     h1 {
@@ -67,7 +67,21 @@
 
     #anzahl {
       font-weight: bold;
-      
+      color: orange; /* Farbe der Zahl */
+      font-size: 3rem; /* Größe der Zahl */
+    }
+
+    /* --- Neue, unabhängige Zahl --- */
+    .anzahl-separat {
+      position: absolute;
+      top: 200px; /* Abstand vom oberen Rand, frei konfigurierbar */
+      left: 50%; /* horizontal mittig */
+      transform: translateX(-50%);
+      font-size: 4rem; /* Größe unabhängig */
+      font-weight: bold;
+      color: orange;
+      z-index: 20;
+      text-align: center;
     }
 
     .footer {
@@ -97,6 +111,9 @@
     <h2>Aktuell im Automaten: <span id="anzahl">–</span></h2>
   </div>
 
+  <!-- Neue, unabhängige Zahl -->
+  <div class="anzahl-separat" id="anzahl2">–</div>
+
   <div class="footer">Letzte Aktualisierung: <span id="zeit">–</span></div>
 
   <script>
@@ -109,25 +126,33 @@
         let anzahl = data.field1 || "–";
         const zeit = new Date(data.created_at).toLocaleString("de-DE", { timeZone: "Europe/Berlin" });
 
-        const span = document.getElementById("anzahl");
+        const span1 = document.getElementById("anzahl");
+        const span2 = document.getElementById("anzahl2");
 
         if (anzahl == 0) {
-          span.innerText = "Ausverkauft, aber die Hühner legen schon nach!";
-          span.classList.add("ausverkauft");
+          span1.innerText = "Ausverkauft, aber die Hühner legen schon nach!";
+          span1.classList.add("ausverkauft");
+
+          span2.innerText = "0";
+          span2.classList.add("ausverkauft");
         } else {
-          span.innerText = anzahl;
-          span.classList.remove("ausverkauft");
+          span1.innerText = anzahl;
+          span1.classList.remove("ausverkauft");
+
+          span2.innerText = anzahl;
+          span2.classList.remove("ausverkauft");
         }
 
         document.getElementById("zeit").innerText = zeit;
       } catch (e) {
         document.getElementById("anzahl").innerText = "Fehler";
+        document.getElementById("anzahl2").innerText = "Fehler";
         document.getElementById("zeit").innerText = "–";
       }
     }
 
     ladeEier();
-    setInterval(ladeEier, 60000); // alle 60 Sekunden aktualisieren
+    setInterval(ladeEier, 60000);
   </script>
 </body>
 </html>
